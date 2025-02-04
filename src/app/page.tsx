@@ -10,9 +10,7 @@ import ErrorModal from "@/app/components/modalError";
 
 export default function Home() {
   const [status, setStatus] = useState<"form" | "loading" | "result">("form");
-  const [urlResponse, setUrlResponse] = useState<ShortUrlResponse | undefined>(
-    undefined
-  );
+  const [urlResponse, setUrlResponse] = useState<ShortUrlResponse | undefined>(undefined);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function shorten(url: string) {
@@ -30,15 +28,16 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center max-w-[90%] w-[750px]">
-      <section className="bg-zinc-900 rounded-md items-center w-full p-6 flex flex-col shadow-md gap-4">
+      <section className="bg-zinc-900 rounded-md items-center w-full p-6 flex flex-col shadow-md gap-3">
         <h1 className="text-3xl font-bold">Encurtador de URL</h1>
-        {status === "form" && (
-          <ShortUrlForm setStatus={setStatus} service={shorten} />
-        )}
-        {status === "loading" && <Loading />}
-        {status === "result" && (
-          <ShortUrlResult setStatus={setStatus} shortUrl={urlResponse} />
-        )}
+        <p className="text-gray-400 text-center">
+          Encurte links longos e compartilhe com facilidade.
+        </p>
+        <div className="w-full" aria-live="polite">
+          {status === "form" && (<ShortUrlForm setStatus={setStatus} service={shorten} />)}
+          {status === "loading" && <Loading />}
+          {status === "result" && (<ShortUrlResult setStatus={setStatus} shortUrl={urlResponse} />)}
+        </div>
       </section>
 
       {errorMessage && (

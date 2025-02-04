@@ -43,7 +43,7 @@ export default function Footer() {
             "@context": "https://schema.org",
             "@type": "Person",
             name: "Igor Bonfim",
-            url: "https://seusite.com",
+            url: "https://igormbonfim.github.io/",
             sameAs: [
               "https://www.linkedin.com/in/igormbonfim/",
               "https://github.com/IgormBonfim",
