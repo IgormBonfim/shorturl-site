@@ -1,0 +1,23 @@
+name: Deploy Site
+
+on:
+    workflow_run:
+      workflows: ["Pull Site Image"]
+      types:
+        - completed
+    workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+            host: ${{ secrets.VPS_HOST }}
+            username: ${{ secrets.VPS_USER }}
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+              cd ${{ secrets.DIRECTORY }}
+              docker compose up -d --no-deps --force-recreate site

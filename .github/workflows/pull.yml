@@ -1,0 +1,23 @@
+name: Pull Site Image
+
+on:
+    workflow_run:
+      workflows: ["Build Site"]
+      types:
+        - completed
+    workflow_dispatch:
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Docker pull image
+          uses: appleboy/ssh-action@v1.2.0
+          with:
+            host: ${{ secrets.VPS_HOST }}
+            username: ${{ secrets.VPS_USER }}
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+                cd ${{ secrets.DIRECTORY }}
+                docker compose pull site
