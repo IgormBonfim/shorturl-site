@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
 import "@/app/globals.css";
 import Footer from "@/app/components/footer";
-
-import { Inter } from "next/font/google";
+import GoogleAdsense from "@/app/components/googleAdsense";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,11 +41,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <GoogleAdsense />
+      </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <div className="flex flex-grow items-center justify-around mx-8 mb-8">
-            {children}
+          {children}
         </div>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
