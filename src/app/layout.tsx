@@ -43,6 +43,10 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <GoogleAdsense />
+        <meta
+          name="google-site-verification"
+          content="0nYtCDPsSl1GPl9_4c6rZ_H3r9QbCiDXODf9EIKPy1c"
+        />
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <div className="flex flex-grow items-center justify-around mx-8 mb-8">
